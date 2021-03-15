@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  prefix: /api
+  routes:
+    employee-service:
+      path: /service-1/**
+      serviceId: EMPLOYEE-SERVICE
+    department-service:
+      path: /service-2/**
+      serviceId: DEPARTMENT-SERVICE
+
+
+server:
+  port: 8084
+
+
+# Konfigurasi Discovery Service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/discovery/
+  instance:
+    hostname: localhost
+
+# Konfigurasi Circuit Breaker
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
