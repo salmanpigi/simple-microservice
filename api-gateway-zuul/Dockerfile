@@ -1,0 +1,4 @@
+FROM openjdk:11
+ADD target/api-gateway-zuul-0.0.1-SNAPSHOT.jar api-gateway-zuul-0.0.1-SNAPSHOT.jar
+EXPOSE 8084
+ENTRYPOINT ["java", "-jar", "api-gateway-zuul-0.0.1-SNAPSHOT.jar"]
